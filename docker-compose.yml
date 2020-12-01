@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+  mongooseim:
+    image: mongooseim/mongooseim:4.0.1-ubuntu20.04-jit
+    container_name: mongooseim-1
+    hostname: mongooseim-1
+    ports:
+      - "5222:5222"
+  amoc:
+    image: esl/amoc:aws-helpers
+    container_name: amoc-1
+    hostname: amoc-1
+    volumes:
+      - "./one2one.erl:/home/amoc/amoc/scenarios/one2one.erl"
+      - "./one2one.beam:/home/amoc/amoc/lib/amoc-0.9.0/ebin/one2one.beam"
+    entrypoint: /home/amoc/amoc/bin/amoc
+    command: foreground
+
+networks:
+  default:
+    driver: bridge
