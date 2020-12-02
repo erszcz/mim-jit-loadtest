@@ -9,6 +9,7 @@ services:
       - "5222:5222"
     volumes:
       - "./vm.args:/usr/lib/mongooseim/etc/vm.args"
+      - "./mnesia:/var/lib/mongooseim"
   amoc:
     image: erszcz/amoc:aws-helpers
     container_name: amoc-1
