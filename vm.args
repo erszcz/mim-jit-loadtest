@@ -1,0 +1,25 @@
+## Name of the node:
+##   -sname node@host
+## or
+##   -name node@fully.qualified.domain.name
+#$
+## Without @something suffix `mongooseimctl debug` uses:
+##   - NODE@`hostname -s` if -sname
+##   - NODE@`hostname -f` if -name
+## to attach a remote shell.
+-sname mongooseim@mongooseim-1
+
+## Cookie for distributed erlang
+-setcookie ejabberd
+
+## Heartbeat management; auto-restarts VM if it dies or becomes unresponsive
+## (Disabled by default..use with caution!)
+##-heart
+
++P 10000000 -env ERL_MAX_PORTS 250000
+
+## Tweak GC to run more often
+-env ERL_FULLSWEEP_AFTER 2
+
+## Enable perf stat gathering
++JPperf true

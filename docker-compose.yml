@@ -7,6 +7,8 @@ services:
     hostname: mongooseim-1
     ports:
       - "5222:5222"
+    volumes:
+      - "./vm.args:/usr/lib/mongooseim/etc/vm.args"
   amoc:
     image: erszcz/amoc:aws-helpers
     container_name: amoc-1
