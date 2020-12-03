@@ -64,6 +64,24 @@ From now, the number of users logged into MongooseIM should start growing
 
 ## Troubleshooting
 
+### Is MongooseIM up and accepting XMPP connections?
+
+We can telnet from the host machine or from Amoc to check that:
+
+```
+$ telnet localhost 5222
+Trying 127.0.0.1...
+Connected to localhost.
+Escape character is '^]'.
+<?xml version='1.0'?><stream:stream xmlns='jabber:client' xmlns:stream='http://etherx.jabber.org/streams' id='dda05b758b960d35' from='localhost' version='1.0'><stream:error><xml-not-well-formed xmlns='urn:ietf:params:xml:ns:xmpp-streams'/></stream:error></stream:stream>Connection closed by foreign host.
+$
+```
+
+After `Escape character is '^]'.` we have to send anything on the
+connection, so type `а` or `Ctrl-D` as the end-of-file. This will make the
+server respond with `xml-not-well-formed` error, but we have a proof that it's up
+and running.
+
 ### Watch MongooseIM logs
 
 Watch and follow MongooseIM logs:
