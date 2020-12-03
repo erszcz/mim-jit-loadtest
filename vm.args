@@ -23,3 +23,6 @@
 
 ## Enable perf stat gathering
 +JPperf true
+
+## Limit scheduler busy wait noise in perf results
++sbwt none
